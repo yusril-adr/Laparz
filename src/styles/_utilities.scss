@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, main {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: $font-stack;
+    line-height: 1.6;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    display: inline-block;
+    min-width: 44px;
+    min-height: 44px;
+    padding: .5rem;
+    color: set-text-color($primary-color);
+    text-decoration: none;
+}
+
+button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: .5rem;
+}
+
+.skip-link {
+    position: absolute;
+    background-color: #bf1722;
+    border-radius: 5px;
+    transform: scale(0);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+  
+.skip-link:focus {
+    transform: scale(1);
+}
+
+section {
+    position: relative;
+}
+
+.section-divider {
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+
+    svg {
+        position: relative;
+        display: block;
+        width: calc(150% + 1.3px);
+        height: 133px;
+    }
+
+    .shape-fill {
+        fill: $secondary-color;
+    }
+}

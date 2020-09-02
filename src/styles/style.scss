@@ -1,0 +1,206 @@
+@import 'config';
+@import 'utilities';
+
+.header {
+    width: 100%;
+    font-size: 1.3rem;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: .5rem 2rem .5rem 1rem;
+    background-color: transparent;
+    background-image: none;
+    transition: .5s;
+
+    &-inner .title {
+        color: $title-color;
+        text-shadow: 4px 4px 10px $title-shadow-color;
+        font-weight: 600;
+    }
+
+    &-menu {
+        background: none;
+        border: none;
+        color: set-text-color($primary-color);
+        font-size: 1.3rem;
+    }
+
+    #drawer {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, .7);
+        font-size: 1rem;
+        transition: .3s;
+
+        ul {
+            @include set-background(rgb(219, 219, 219));
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 225px;
+            list-style: none;
+            font-weight: 600;
+            transform: translateX(-100%);
+            transition: transform .3s;
+
+            span {
+                display: block;
+                margin: 1rem auto;
+                text-align: center;
+                font-size: 1.3rem;
+            }
+
+            li {
+                margin: 1.5rem 0 1.5rem 1rem;
+
+                a {
+                    color: #333 !important;
+                }
+            }
+        }
+    }
+
+    #drawer.active {
+        opacity: 1;
+        right: 0;
+
+        ul {
+            transform: translateX(0);
+        }
+    }
+}
+
+.onscroll {
+    @include set-background($navbar-color);
+
+    .title {
+        text-shadow: none !important; 
+    }
+
+    nav ul li a {
+        color: set-text-color($navbar-color) !important;
+    }
+}
+
+.hero {
+    background-color: rgba(0, 0, 0, .5);
+    @include set-img-background('../public/images/heros/hero-image_4.jpg');
+    background-blend-mode: multiply;
+    color: #fff;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.3;
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        span {
+            font-size: 1.7rem;
+            font-weight: normal;
+        }
+    }
+}
+
+.fun-fact {
+    @include set-background($primary-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 12rem;
+    box-shadow: 0 -30px 25px 22px $primary-color;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding-bottom: 1rem;
+    }
+
+    fact-text {
+        font-size: 1rem;
+    }
+}
+
+.restaurant {
+    width: 100%;
+    @include set-background($secondary-color);
+    
+    h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    restaurant-list {
+        width: 100%;
+        padding: 1rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 1.5rem;
+
+        restaurant-item {
+            @include set-background(#fff);
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+
+            a {
+                color: set-text-color(#fff);
+            }
+
+            .city {
+                @include set-background(#fff);
+                position: absolute;
+                top: 1.5rem;
+                padding: .5rem;
+                border-radius: 0 .5rem .5rem 0;
+                font-weight: 600;
+            }
+
+            .detail {
+                display: flex;
+                flex-direction: column;
+                padding: .5rem 1rem 1rem;
+                font-weight: 600;
+                font-size: 1.3rem;
+
+                .rating::before {
+                    content: "⭐ ";
+                }
+
+                .name {
+                    padding-top: 5px;
+                    font-size: 1.3rem;
+                }
+            }
+
+            .description {
+                padding: 0 1rem 1rem;
+                text-align: justify;
+            }
+        }
+    }
+}
+
+footer {
+    @include set-background($footer-color);
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+@import 'responsive';

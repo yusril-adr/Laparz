@@ -1,0 +1,136 @@
+@media screen and (min-width: 640px) {
+    #menu {
+        display: none;
+    }
+
+    .header {
+        padding: .5rem 2rem 1rem 2rem;
+        font-size: 2rem;
+        justify-content: space-between;
+
+        nav {
+            min-width: 250px;
+            font-size: 1rem;
+            padding-top: .5rem;
+
+            ul {
+                width: 100%;
+                list-style: none;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                span {
+                    display: none;
+                }
+
+                li a {
+                    color: #fff;
+                }
+
+                li a:active {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+
+    .hero {
+        min-height: 650px;
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        span {
+            font-size: 2rem;
+        }
+    }
+
+    .fun-fact {
+        h2 {
+            font-size: 2rem;
+        }
+
+        fact-text {
+            width: 70%;
+            font-size: 1rem;
+        }
+    }
+
+    .restaurant {
+        h2 {
+            font-size: 2rem;
+        }
+
+        restaurant-list {
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 1.5rem;
+
+            figure {
+                max-height: 25vw;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .header {
+        padding: .5rem 3rem 1rem 3rem;
+
+        nav {
+            min-width: 350px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+    }
+
+    .hero {
+        min-height: 800px;
+
+        h1 {
+            font-size: 5rem;
+        }
+    
+        span {
+            font-size: 3rem;
+        }
+    }
+
+    .fun-fact {
+        padding: 6rem 6rem 18rem;
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        fact-text {
+            font-size: 1.5rem;
+        }
+    }
+
+    .restaurant {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 2.5rem;
+        }
+
+        restaurant-list {
+            padding: 2rem 2rem;
+            max-width: 1000px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 1.5rem;
+
+            figure {
+                max-height: 170px;
+                overflow: hidden;
+            }
+        }
+    }
+}
