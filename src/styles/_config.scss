@@ -1,0 +1,49 @@
+$font-stack: Montserrat, Helvetica, sans-serif;
+$primary-color: #f37121;
+$secondary-color: #ee620d;
+$third-color: #d63447;
+$navbar-color: $third-color;
+$footer-color: $third-color;
+$title-color: #fff;
+$title-shadow-color: set-text-color($title-color);
+
+// Font face
+@font-face{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../public/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+// Loading animation
+@keyframes loading {
+    0%, 20%, 80%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+}
+
+// Set text color based on bg
+@function set-text-color($color) {
+    @if (lightness($color) > 60%) {
+        @return #333;
+    } @else {
+        @return #fff;
+    }
+}
+
+// Set background & text color
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+// Set background image
+@mixin set-img-background($img) {
+    background-image: url($img);
+    background-size: cover;
+    background-position: center;
+}

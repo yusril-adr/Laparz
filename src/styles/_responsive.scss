@@ -1,0 +1,220 @@
+@media screen and (min-width: 640px) {
+    restaurant-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 1.5rem;
+
+        figure {
+            max-height: 25vw;
+            overflow: hidden;
+        }
+    }
+
+    /* 
+    Home/Explore
+    */
+
+    .hero {
+        min-height: 650px;
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        span {
+            font-size: 2rem;
+        }
+    }
+
+    .fun-fact {
+        h2 {
+            font-size: 2rem;
+        }
+
+        fact-text {
+            width: 70%;
+            font-size: 1rem;
+        }
+    }
+
+    .restaurant {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+
+    /* 
+        Detail
+    */
+
+    restaurant-detail {
+        section {
+            padding: 1rem 3rem;
+        }
+
+        .detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            &-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .description {
+                max-height: 200px;
+                font-size: .8rem;
+                overflow: auto;
+            }
+
+            .category {
+                margin-top: 2rem;
+                font-size: .8rem;
+
+                category-item {
+                    font-size: .8rem;
+                }
+            }
+        }
+
+        .menu {
+            &-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+    }
+
+    review-list {
+        max-width: 450px;
+        margin: auto;
+    }
+
+    /* 
+        Favorite
+    */
+
+    .favorite {
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    restaurant-detail {
+        .detail .description {
+            max-height: 260px;
+        }
+
+        .menu {
+            &-container {
+                gap: 3rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    restaurant-list {
+        padding: 2rem 2rem;
+        max-width: 1000px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 1.5rem;
+
+        figure {
+            max-height: 170px;
+            overflow: hidden;
+        }
+    }
+
+    /* 
+    Home/Explore
+    */
+
+    .hero {
+        min-height: 800px;
+
+        h1 {
+            font-size: 5rem;
+        }
+    
+        span {
+            font-size: 3rem;
+        }
+    }
+
+    .fun-fact {
+        padding: 6rem 6rem 18rem;
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        fact-text {
+            font-size: 1.5rem;
+        }
+    }
+
+    .restaurant {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    /* 
+    Detail
+    */
+
+    restaurant-detail {
+        .detail {
+            &-container {
+                max-width: 1000px;
+            }
+
+            .description {
+                max-height: 320px;
+                font-size: 1rem;
+                overflow: auto;
+            }
+
+            .category {
+                font-size: 1rem;
+
+                category-item {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .menu {
+            &-container {
+                max-width: 1000px;
+                padding: 1rem;
+                gap: 7rem;
+            }
+        }
+    }
+
+    review-list {
+        max-width: 550px;
+        margin: auto;
+    }
+
+    /* 
+        Favorite
+    */
+
+    .favorite {
+        h1 {
+            font-size: 4rem;
+        }
+    }
+}
