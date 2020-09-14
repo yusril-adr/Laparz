@@ -29,14 +29,7 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender();
 
-    this._changeSkipToContent();
     this._removeLoading();
-  }
-
-  async _changeSkipToContent() {
-    const url = UrlParser.parseActiveUrlWithRealValueCombiner();
-    const attribute = `#main-content${url}`;
-    this._skipLink.setAttribute('href', attribute);
   }
 
   async _removeLoading() {
