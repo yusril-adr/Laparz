@@ -1,8 +1,8 @@
 {
-  "name": "restaurant-apps",
+  "name": "laparz",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "webpack.prod.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -10,7 +10,7 @@
     "graph": "git log --all --oneline --text --decorate --graph"
   },
   "keywords": [],
-  "author": "your_name <your.email@domain.com>",
+  "author": "Yusril A. P.",
   "license": "ISC",
   "browserslist": [
     "defaults",
