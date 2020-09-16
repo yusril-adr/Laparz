@@ -29,7 +29,7 @@ class App {
     this._content.innerHTML = await page.render();
     await page.afterRender();
 
-    this._removeLoading();
+    await this._removeLoading();
   }
 
   async _removeLoading() {
