@@ -1,6 +1,6 @@
 import '../elements/home/fact-text';
 import '../elements/restaurant-list';
-import content from '../../../templates/content/home.html';
+import { createHomeTemplate } from '../template/template-creator';
 import HeaderInitiator from '../../utils/header-initiator';
 import HEADER_CONFIG from '../../global/header-config';
 import RestaurantSource from '../../data/restaurants-source';
@@ -10,7 +10,7 @@ const { header } = HEADER_CONFIG;
 
 const home = {
   async render() {
-    return content;
+    return createHomeTemplate();
   },
 
   async afterRender() {

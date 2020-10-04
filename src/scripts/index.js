@@ -14,6 +14,11 @@ const app = new App({
   content: document.querySelector('main'),
 });
 
+// Needed for Hot Module Reload
+if (module.hot) {
+  module.hot.accept();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   swRegister();
   app.renderPage();

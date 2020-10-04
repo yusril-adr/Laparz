@@ -1,6 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -16,19 +20,6 @@ module.exports = {
       {
         test: /\.html$/i,
         use: 'html-loader',
-      },
-      // File loader for image
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images',
-            },
-          },
-        ],
       },
       // File loader for font
       {
@@ -48,7 +39,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
-      favicon: path.resolve('src', 'public', 'images', 'icon.png'),
+      favicon: path.resolve('src', 'public', 'icon.png'),
       filename: 'index.html',
     }),
     new WebpackPwaManifest({
@@ -65,17 +56,15 @@ module.exports = {
       ios: true,
       icons: [
         {
-          src: path.resolve('src', 'public', 'images', 'icon.png'),
+          src: path.resolve('src', 'public', 'icon.png'),
           sizes: [192, 256, 384, 512],
           ios: true,
-          destination: 'images',
           purpose: 'any',
         },
         {
-          src: path.resolve('src', 'public', 'images', 'maskable.png'),
+          src: path.resolve('src', 'public', 'maskable.png'),
           sizes: [192, 256, 384, 512],
           ios: true,
-          destination: 'images',
           purpose: 'maskable',
         },
       ],
@@ -83,6 +72,33 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/scripts/service-worker.js',
       swDest: 'service-worker.js',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src/public/images/'),
+          to: path.resolve(__dirname, 'dist/images/'),
+        },
+      ],
+    }),
+    new ImageminWebpackPlugin({
+      plugins: [
+        ImageminMozjpeg({
+          quality: 50,
+          progressive: true,
+        }),
+      ],
+    }),
+    new ImageminWebpWebpackPlugin({
+      config: [
+        {
+          test: /\.(jpe?g|png)/,
+          options: {
+            quality: 50,
+          },
+        },
+      ],
+      overrideExtension: true,
     }),
   ],
 };

@@ -17,6 +17,53 @@ const createLoadingTemplate = () => `
     </div>
 `;
 
+const createHomeTemplate = () => `
+    <div class="hero">
+        <picture class="lazyload">
+            <source media="(max-width: 640px)" srcset="./images/hero-image-small.webp">
+            <source media="(max-width: 1000px)" srcset="./images/hero-image-medium.webp">
+            <source srcset="./images/hero-image.webp">
+            <img
+                src="./images/hero-image.jpg"
+                srcset="
+                    ./images/hero-image-small.jpg 675w,
+                    ./images/hero-image-medium.jpg 1097w,
+                    ./images/hero-image.jpg 1350w
+                "
+                sizes="(max-width: 640px) 675px,(max-width: 1000px) 1097px, 1350px"
+                alt="Hero Image"
+            />
+        </picture>
+       
+        <div class="hero-content">
+            <h1>Enjoy delicious food,</h1>
+            <span>around you.</span>
+        </div> 
+    </div>
+
+    <section class="home-section fun-fact">
+        <h2 aria-label="Fakta Unik">#Fakta-Unik</h2>
+        <fact-text></fact-text>
+
+        <div class="section-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="home-section" id="main-content">
+        <div class="restaurant">
+            <h2>Eksplor Restoran</h2>
+
+            <restaurant-list></restaurant-list>
+        </div>
+    </section>
+
+    <loading-element></loading-element>
+
+`;
+
 const createRestaurantListEmptyTemplate = () => `
     <div class="empty-list-container">
       <span class="empty-list-message">
@@ -35,7 +82,7 @@ const createRestaurantListErrorTemplate = (message) => `
 
 const createRestaurantItemTemplate = (restaurant) => `
     <figure>
-        <img src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}" alt="${restaurant.name}">
+        <img class="lazyload" src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}"alt="${restaurant.name}">
     </figure>
 
     <span class="city">${restaurant.city}</span>
@@ -51,7 +98,16 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <section class="detail">
         <div class="detail-container">
             <figure>
-                <img src="${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId}" alt="${restaurant.name}">
+                <img 
+                    class="lazyload" 
+                    src="${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId}"
+                    srcset="
+                        ${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId} 405w,
+                        ${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId} 810w,
+                    "
+                    sizes="(max-width: 405px) 405px, 810px 
+                    alt="${restaurant.name}"
+                />
                 <figcaption class="name">${restaurant.name}</figcaption>
                 <figcaption class="address">${restaurant.address}</figcaption>
                 <figcaption class="city">${restaurant.city}</figcaption>
@@ -132,6 +188,7 @@ const createLikedButtonTemplate = () => `
 `;
 
 export {
+  createHomeTemplate,
   createLoadingTemplate,
   createRestaurantListEmptyTemplate,
   createRestaurantListErrorTemplate,
