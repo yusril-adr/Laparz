@@ -82,7 +82,16 @@ const createRestaurantListErrorTemplate = (message) => `
 
 const createRestaurantItemTemplate = (restaurant) => `
     <figure>
-        <img class="lazyload" src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}"alt="${restaurant.name}">
+        <img 
+            class="lazyload" 
+            src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}" 
+            srcset="
+                ${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId} 405w,
+                ${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId} 810w 
+            "
+            sizes="(max-width: 405px) 405px, 810px"
+            alt="${restaurant.name}"
+            />
     </figure>
 
     <span class="city">${restaurant.city}</span>
@@ -105,7 +114,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
                         ${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId} 405w,
                         ${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId} 810w,
                     "
-                    sizes="(max-width: 405px) 405px, 810px 
+                    sizes="(max-width: 405px) 405px, 810px" 
                     alt="${restaurant.name}"
                 />
                 <figcaption class="name">${restaurant.name}</figcaption>
