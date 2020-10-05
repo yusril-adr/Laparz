@@ -17,10 +17,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.html$/i,
-        use: 'html-loader',
-      },
       // File loader for font
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

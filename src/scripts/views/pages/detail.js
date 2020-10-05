@@ -1,6 +1,6 @@
 import '../elements/loading-element';
 import '../elements/detail/restaurant-detail';
-import content from '../../../templates/content/detail.html';
+import { createDetailPageTemplate } from '../template/template-creator';
 import UrlParser from '../../routes/url-parser';
 import HeaderInitiator from '../../utils/header-initiator';
 import HEADER_CONFIG from '../../global/header-config';
@@ -12,7 +12,7 @@ const { header } = HEADER_CONFIG;
 
 const detail = {
   async render() {
-    return content;
+    return createDetailPageTemplate();
   },
 
   async afterRender() {

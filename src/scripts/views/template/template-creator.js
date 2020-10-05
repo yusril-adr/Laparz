@@ -1,23 +1,6 @@
 import API_ENDPOINT from '../../global/api-endpoint';
 
-const createLoadingTemplate = () => `
-    <div class="loading">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-`;
-
-const createHomeTemplate = () => `
+const createHomePageTemplate = () => `
     <div class="hero">
         <picture class="lazyload">
             <source media="(max-width: 640px)" srcset="./images/hero-image-small.webp">
@@ -62,6 +45,41 @@ const createHomeTemplate = () => `
 
     <loading-element></loading-element>
 
+`;
+
+const createDetailPageTemplate = () => `
+    <restaurant-detail id="main-content"></restaurant-detail>
+    <div id="likeButtonContainer"></div>
+    <loading-element></loading-element>
+`;
+
+const createFavoritePageTemplate = () => `
+    <section class="favorite" id="main-content">
+    <div class="favorite-restaurant">
+        <h1>Restoran Favorit</h1>
+
+        <restaurant-list></restaurant-list>
+    </div>
+    </section>
+
+    <loading-element></loading-element>
+`;
+
+const createLoadingTemplate = () => `
+    <div class="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 `;
 
 const createRestaurantListEmptyTemplate = () => `
@@ -197,7 +215,9 @@ const createLikedButtonTemplate = () => `
 `;
 
 export {
-  createHomeTemplate,
+  createHomePageTemplate,
+  createDetailPageTemplate,
+  createFavoritePageTemplate,
   createLoadingTemplate,
   createRestaurantListEmptyTemplate,
   createRestaurantListErrorTemplate,

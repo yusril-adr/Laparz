@@ -15,6 +15,7 @@ const app = new App({
 });
 
 // Needed for Hot Module Reload
+// https://webpack.js.org/guides/hot-module-replacement/
 if (module.hot) {
   module.hot.accept();
 }

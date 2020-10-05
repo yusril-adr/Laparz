@@ -362,7 +362,7 @@ review-list {
 
 .favorite {
     @include set-background($primary-color);
-    min-height: 608px;
+    min-height: 550px;
     
     &-restaurant {
         padding: 1rem;

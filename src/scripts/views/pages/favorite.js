@@ -1,6 +1,6 @@
 import '../elements/home/fact-text';
 import '../elements/restaurant-list';
-import content from '../../../templates/content/favorite.html';
+import { createFavoritePageTemplate } from '../template/template-creator';
 import HeaderInitiator from '../../utils/header-initiator';
 import HEADER_CONFIG from '../../global/header-config';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
@@ -10,7 +10,7 @@ const { header } = HEADER_CONFIG;
 
 const favorite = {
   async render() {
-    return content;
+    return createFavoritePageTemplate();
   },
 
   async afterRender() {
