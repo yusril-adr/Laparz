@@ -6,7 +6,9 @@
   "scripts": {
     "start-dev": "webpack --config webpack.dev.js && node sharp.js && node server-dev.js",
     "build": "webpack --config webpack.prod.js && node sharp.js",
+    "build&run": "webpack --config webpack.prod.js && node sharp.js && node server.js",
     "build-image": "node sharp.js",
+    "server": "node server.js",
     "test": "karma start",
     "graph": "git log --all --oneline --text --decorate --graph"
   },
