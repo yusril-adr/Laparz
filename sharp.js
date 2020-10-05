@@ -8,6 +8,7 @@ if (!fs.existsSync(target)) {
   fs.mkdirSync(target);
 }
 
+console.log('Resizing images ...');
 fs.readdirSync(target).forEach((image) => {
   const extension = image.split('.').slice(-1).join('.');
 
@@ -34,4 +35,4 @@ fs.readdirSync(target).forEach((image) => {
   }
 });
 
-console.log('Resize image completed.');
+console.log('Resize images completed.');
