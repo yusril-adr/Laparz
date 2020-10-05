@@ -39,6 +39,20 @@ const CacheHelper = {
       }),
     );
   },
+
+  async routeImage() {
+    registerRoute(
+      ({ request }) => request.destination === 'image',
+      new StaleWhileRevalidate({
+        cacheName: CONFIG.CACHE_NAME.IMAGES,
+        plugins: [
+          new CacheableResponsePlugin({
+            statuses: [0, 200],
+          }),
+        ],
+      }),
+    );
+  },
 };
 
 export default CacheHelper;

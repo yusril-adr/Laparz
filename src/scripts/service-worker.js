@@ -6,6 +6,7 @@ import CacheHelper from './utils/cache-helper';
 skipWaiting();
 clientsClaim();
 
+CacheHelper.routeImage();
 CacheHelper.routeBaseUrl();
 CacheHelper.routeUrlPath('/detail');
 

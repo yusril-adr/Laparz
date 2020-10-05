@@ -9,6 +9,7 @@ const CONFIG = {
     RESTAURANT_DETAIL: 'Ups kesalahan telah terjadi, Cek koneksi anda atau mungkin restoran ini tidak ada.',
   },
   CACHE_NAME: {
+    IMAGES: 'Laparz-Images',
     UTILS: 'Laparz-Utils',
     DETAIL: 'Laparz-Detail',
   },
