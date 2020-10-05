@@ -202,13 +202,13 @@ const createReviewItemTemplate = (item) => `
     <hr>
 `;
 
-const createLikeButtonTemplate = () => `
+const createLikeRestaurantButtonTemplate = () => `
   <button aria-label="Tambahkan restoran ke favorit" id="likeButton" class="like">
      <i class="far fa-heart" aria-hidden="true"></i>
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
+const createUnlikedRestaurantButtonTemplate = () => `
   <button aria-label="Hapus restoran dari favorit" id="likedButton" class="like">
     <i class="fas fa-heart" aria-hidden="true"></i>
   </button>
@@ -228,6 +228,6 @@ export {
   createMenuItemTemplate,
   createReviewListTemplate,
   createReviewItemTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createLikeRestaurantButtonTemplate,
+  createUnlikedRestaurantButtonTemplate,
 };

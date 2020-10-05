@@ -6,7 +6,7 @@ import HeaderInitiator from '../../utils/header-initiator';
 import HEADER_CONFIG from '../../global/header-config';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import RestaurantSource from '../../data/restaurants-source';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 
 const { header } = HEADER_CONFIG;
 
@@ -24,8 +24,9 @@ const detail = {
       const restaurant = await this._getRestaurant(id);
       detailElem.data = restaurant;
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
+        favoriteRestaurant: FavoriteRestaurantIdb,
         restaurant,
       });
     } catch (error) {

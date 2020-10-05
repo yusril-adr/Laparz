@@ -12,6 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "consistent-return": "off",
         "default-case": "off",
         "import/no-extraneous-dependencies": "off",
         "linebreak-style": "off",
@@ -19,7 +20,9 @@
         "no-console": "off",
         "no-extra-boolean-cast": "off",
         "no-param-reassign": "warn",
+        "no-prototype-builtins":"off",
         "no-restricted-globals": "off",
+        "no-return-assign": "off",
         "no-underscore-dangle": "off",
         "no-unused-vars": "warn"
     }

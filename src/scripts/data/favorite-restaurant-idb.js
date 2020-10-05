@@ -14,6 +14,10 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
 
 const FavoriteRestaurantIdb = {
   async getRestaurant(id) {
+    if (!id) {
+      return;
+    }
+
     const db = await dbPromise;
     const tx = db.transaction(OBJECT_STORE_NAME, 'readonly');
     const store = tx.objectStore(OBJECT_STORE_NAME);
@@ -26,16 +30,30 @@ const FavoriteRestaurantIdb = {
     return store.getAll();
   },
   async putRestaurant(restaurant) {
+    if (!restaurant.hasOwnProperty('id')) {
+      return;
+    }
+
     const db = await dbPromise;
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     return store.put(restaurant);
   },
   async deleteRestaurant(id) {
+    if (!id) {
+      return;
+    }
+
     const db = await dbPromise;
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     return store.delete(id);
+  },
+  async deleteAllRestaurant() {
+    const db = await dbPromise;
+    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
+    const store = tx.objectStore(OBJECT_STORE_NAME);
+    return store.clear();
   },
 };
 
