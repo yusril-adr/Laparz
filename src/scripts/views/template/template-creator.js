@@ -2,7 +2,7 @@ import API_ENDPOINT from '../../global/api-endpoint';
 
 const createHomePageTemplate = () => `
     <div class="hero">
-        <picture class="lazyload">
+        <picture>
             <source media="(max-width: 640px)" srcset="./images/hero-image-small.webp">
             <source media="(max-width: 1000px)" srcset="./images/hero-image-medium.webp">
             <source srcset="./images/hero-image.webp">

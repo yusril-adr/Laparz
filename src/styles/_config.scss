@@ -40,10 +40,3 @@ $title-shadow-color: set-text-color($title-color);
     background-color: $color;
     color: set-text-color($color);
 }
-
-// Set background image
-@mixin set-img-background($img) {
-    background-image: url($img);
-    background-size: cover;
-    background-position: center;
-}

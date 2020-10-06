@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -15,5 +15,6 @@ app.get('/', (request, response) => {
 
 // listen for requests :)
 app.listen(PORT, () => {
-  console.log(`Your app is listening on port ${PORT}`);
+  console.log(`App listening to http://127.0.0.1:${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
