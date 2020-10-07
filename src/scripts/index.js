@@ -14,12 +14,6 @@ const app = new App({
   content: document.querySelector('main'),
 });
 
-// Needed for Hot Module Reload
-// https://webpack.js.org/guides/hot-module-replacement/
-if (module.hot) {
-  module.hot.accept();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   swRegister();
   app.renderPage();

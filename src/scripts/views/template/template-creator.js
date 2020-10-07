@@ -102,12 +102,7 @@ const createRestaurantItemTemplate = (restaurant) => `
     <figure>
         <img 
             class="lazyload" 
-            src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}" 
-            srcset="
-                ${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId} 405w,
-                ${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId} 810w 
-            "
-            sizes="(max-width: 405px) 405px, 810px"
+            data-src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}" 
             alt="${restaurant.name}"
             />
     </figure>
