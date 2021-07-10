@@ -18,8 +18,8 @@ class RestaurantSource {
   static async reviews(id) {
     const response = await fetch(API_ENDPOINT.DETAIL + id);
     const responseJson = await response.json();
-    const reviews = responseJson.restaurant.consumerReviews;
-    return reviews.reverse();// Sorted by the newest
+    const reviews = responseJson.restaurant.customerReviews;
+    return reviews.reverse(); // Sorted by the newest
   }
 
   static async postReview({ id, name, review }) {
