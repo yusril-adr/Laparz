@@ -32,7 +32,6 @@ class RestaurantSource {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': CONFIG.KEY,
       },
       body: JSON.stringify(reviewObject),
     };

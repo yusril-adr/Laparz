@@ -1,6 +1,5 @@
 const CONFIG = {
-  KEY: '12345',
-  BASE_URL: 'https://dicoding-restaurant-api.el.r.appspot.com',
+  BASE_URL: 'https://restaurant-api.dicoding.dev',
   DATABASE_NAME: 'Laparz',
   DATABASE_VERSION: 1,
   OBJECT_STORE_NAME: 'favorite',
