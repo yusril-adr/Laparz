@@ -13,7 +13,7 @@ const createHomePageTemplate = () => `
                     ./images/hero-image-medium.jpg 1097w,
                     ./images/hero-image.jpg 1350w
                 "
-                sizes="(max-width: 640px) 675px,(max-width: 1000px) 1097px, 1350px"
+                sizes="(max-width: 640px) 675px,(max-width: 1000px) 1097px"
                 alt="Hero Image"
             />
         </picture>

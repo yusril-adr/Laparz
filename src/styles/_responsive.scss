@@ -136,6 +136,10 @@
     .hero {
         min-height: 800px;
 
+        picture img {
+            width: 100%;
+        }
+
         h1 {
             font-size: 5rem;
         }
