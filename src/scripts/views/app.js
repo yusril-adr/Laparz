@@ -25,16 +25,27 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url] || routes['/'];
+    const page = routes[url];
     this._content.innerHTML = await page.render();
     await page.afterRender();
 
-    await this._removeLoading();
+    this._removeLoading();
+    this._initSkipContent();
   }
 
-  async _removeLoading() {
+  _removeLoading() {
     const loading = document.querySelector('loading-element');
     this._content.removeChild(loading);
+  }
+
+  _initSkipContent() {
+    const mainContent = this._content.querySelector('#main-content');
+
+    this._skipLink.addEventListener('click', (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      mainContent.focus();
+    });
   }
 }
 

@@ -10,6 +10,7 @@ const FavoriteRestaurantArray = {
       return;
     }
 
+    // eslint-disable-next-line consistent-return
     return favoriteRestaurants.find((restaurant) => restaurant.id === id);
   },
 
@@ -18,6 +19,7 @@ const FavoriteRestaurantArray = {
   },
 
   putRestaurant(restaurant) {
+    // eslint-disable-next-line no-prototype-builtins
     if (!restaurant.hasOwnProperty('id')) {
       return;
     }
@@ -35,7 +37,9 @@ const FavoriteRestaurantArray = {
 };
 
 describe('Favorite Restaurant Array Contract Test Implementation', () => {
-  afterEach(() => favoriteRestaurants = []);
+  afterEach(() => {
+    favoriteRestaurants = [];
+  });
 
   itActsAsFavoriteRestaurantModel(FavoriteRestaurantArray);
 });

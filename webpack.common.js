@@ -1,19 +1,22 @@
+const path = require('path');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const { InjectManifest } = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
-const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, 'src/scripts/index.js'),
+    app: path.resolve(__dirname, 'src/scripts/index.js'),
   },
   output: {
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    clean: true,
+    assetModuleFilename: 'public/others/[hash][ext][query]',
   },
   optimization: {
     splitChunks: {
@@ -40,26 +43,30 @@ module.exports = {
   },
   module: {
     rules: [
-      // File loader for font
+      // Asset loader for image
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/images/[hash][ext][query]',
+        },
+      },
+      // Asset loader for font
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/fonts/[hash][ext][query]',
+        },
       },
     ],
   },
   plugins: [
+    new ProgressBarPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/templates/index.html'),
-      favicon: path.resolve('src', 'public', 'icon.png'),
       filename: 'index.html',
+      template: path.resolve(__dirname, 'src/templates/index.html'),
+      favicon: path.resolve('src', 'public', 'images', 'icon.png'),
     }),
     new WebpackPwaManifest({
       filename: 'manifest.json',
@@ -73,24 +80,24 @@ module.exports = {
       inject: true,
       fingerprints: true,
       ios: true,
+      includeDirectory: true,
+      publicPath: '/',
       icons: [
         {
-          src: path.resolve('src', 'public', 'icon.png'),
+          src: path.resolve('src', 'public', 'images', 'icon.png'),
           sizes: [192, 256, 384, 512],
           ios: true,
+          destination: 'public/images',
           purpose: 'any',
         },
         {
-          src: path.resolve('src', 'public', 'maskable.png'),
+          src: path.resolve('src', 'public', 'images', 'maskable.png'),
           sizes: [192, 256, 384, 512],
           ios: true,
+          destination: 'public/images',
           purpose: 'maskable',
         },
       ],
-    }),
-    new InjectManifest({
-      swSrc: './src/scripts/service-worker.js',
-      swDest: 'service-worker.js',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -118,6 +125,10 @@ module.exports = {
         },
       ],
       overrideExtension: true,
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
     }),
   ],
 };

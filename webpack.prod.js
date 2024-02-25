@@ -1,13 +1,15 @@
 const { merge } = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
+  devtool: 'source-map',
   optimization: {
     minimize: true,
     minimizer: [
@@ -19,18 +21,14 @@ module.exports = merge(common, {
         },
         extractComments: false,
       }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorPluginOptions: {
-          preset: ['default', { discardComments: { removeAll: true } }],
-        },
-      }),
+      new CssMinimizerPlugin(),
     ],
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: '/node_modules/',
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -49,9 +47,11 @@ module.exports = merge(common, {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                autoprefixer,
-              ],
+              postcssOptions: {
+                plugins: [
+                  autoprefixer,
+                ],
+              },
             },
           },
         ],
@@ -64,9 +64,11 @@ module.exports = merge(common, {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                autoprefixer,
-              ],
+              postcssOptions: {
+                plugins: [
+                  autoprefixer,
+                ],
+              },
             },
           },
           { loader: 'sass-loader' },
@@ -77,6 +79,10 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
+    }),
+    new InjectManifest({
+      swSrc: './src/scripts/service-worker.js',
+      swDest: 'service-worker.js',
     }),
     new CleanWebpackPlugin(),
   ],

@@ -10,6 +10,10 @@ if (!fs.existsSync(target)) {
 
 console.log('Resizing images ...');
 fs.readdirSync(target).forEach((image) => {
+  // if folder, then skip
+  if (!image.includes('.')) {
+    return;
+  }
   const extension = image.split('.').slice(-1).join('.');
 
   if (!image.endsWith(`-medium.${extension}`) && !image.endsWith(`-small.${extension}`)) {

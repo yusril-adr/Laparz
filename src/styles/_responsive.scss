@@ -1,3 +1,5 @@
+@use 'config';
+
 @media screen and (min-width: 640px) {
     restaurant-list {
         grid-template-columns: repeat(2, 1fr);
@@ -135,10 +137,6 @@
 
     .hero {
         min-height: 800px;
-
-        picture img {
-            width: 100%;
-        }
 
         h1 {
             font-size: 5rem;

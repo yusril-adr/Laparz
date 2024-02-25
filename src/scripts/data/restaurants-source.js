@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../global/api-endpoint';
+import CONFIG from '../global/config';
 
 class RestaurantSource {
   static async list() {
@@ -8,17 +9,17 @@ class RestaurantSource {
   }
 
   static async detail(id) {
-    const response = await fetch(API_ENDPOINT.DETAIL + id);
+    const response = await fetch(`${API_ENDPOINT.DETAIL}/${id}`);
     const responseJson = await response.json();
     if (responseJson.error) throw new Error(responseJson.message);
     return responseJson.restaurant;
   }
 
   static async reviews(id) {
-    const response = await fetch(API_ENDPOINT.DETAIL + id);
+    const response = await fetch(`${API_ENDPOINT.DETAIL}/${id}`);
     const responseJson = await response.json();
     const reviews = responseJson.restaurant.customerReviews;
-    return reviews.reverse(); // Sorted by the newest
+    return reviews.reverse();// Sorted by the newest
   }
 
   static async postReview({ id, name, review }) {
@@ -31,6 +32,7 @@ class RestaurantSource {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-Auth-Token': CONFIG.KEY,
       },
       body: JSON.stringify(reviewObject),
     };

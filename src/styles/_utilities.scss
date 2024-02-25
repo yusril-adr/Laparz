@@ -1,3 +1,6 @@
+@use 'sass:color';
+@use 'config';
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,7 +15,7 @@ main {
 }
 
 body {
-  font-family: $font-stack;
+  font-family: config.$font-stack;
   line-height: 1.6;
 }
 
@@ -25,8 +28,13 @@ a {
   min-width: 44px;
   min-height: 44px;
   padding: 0.5rem;
-  color: set-text-color($primary-color);
+  color: config.set-text-color(config.$primary-color);
   text-decoration: none;
+}
+
+input {
+  min-width: 44px;
+  min-height: 44px;
 }
 
 button {
@@ -87,7 +95,7 @@ main {
   }
 
   .shape-fill {
-    fill: $secondary-color;
+    fill: config.$secondary-color;
   }
 }
 
@@ -104,7 +112,7 @@ main {
   transition: .3s;
 
   &-container {
-    @include set-background(#fff);
+    @include config.set-background(#fff);
     margin: auto;
     padding: 1rem;
     width: 100%;
@@ -127,7 +135,7 @@ main {
   }
 
   &-btn {
-    @include set-background($third-color);
+    @include config.set-background(config.$third-color);
     border-radius: .5rem;
     padding: .5rem 1rem;
     font-weight: 600;
@@ -247,7 +255,7 @@ loading-element {
   right: 1rem;
 
   .like {
-    @include set-background(lighten($third-color, 5));
+    @include config.set-background(color.scale(config.$third-color, $lightness: -10%));
     border-radius: 50%;
     font-size: 1.3rem;
     padding: 1rem;
@@ -286,12 +294,12 @@ loading-element {
   }
 
   a:hover {
-    color: $third-color;
+    color: config.$third-color;
   }
 }
 
 .header {
-  @include set-background($navbar-color);
+  @include config.set-background(config.$navbar-color);
   width: 100%;
   font-size: 1.3rem;
   position: sticky;
@@ -303,12 +311,12 @@ loading-element {
   transition: .5s;
 
   &-inner .title {
-      color: $title-color;
+      color: config.$title-color;
       font-weight: 600;
   }
 
   &-menu {
-      color: $title-color;
+      color: config.$title-color;
       font-size: 1.3rem;
   }
 
@@ -323,7 +331,7 @@ loading-element {
       transition: .3s;
 
       ul {
-          @include set-background(rgb(219, 219, 219));
+          @include config.set-background(rgb(219, 219, 219));
           position: absolute;
           top: 0;
           bottom: 0;
@@ -366,16 +374,16 @@ loading-element {
   background-image: none;
 
   .title {
-      text-shadow: 4px 4px 10px $title-shadow-color;
+      text-shadow: 4px 4px 10px config.$title-shadow-color;
   }
 
   nav ul li a {
-      color: set-text-color($primary-color);
+      color: config.set-text-color(config.$primary-color);
   }
 }
 
 .onscroll {
-  @include set-background($navbar-color);
+  @include config.set-background(config.$navbar-color);
   position: fixed;
 
   .title {
@@ -383,12 +391,12 @@ loading-element {
   }
 
   nav ul li a {
-      color: set-text-color($navbar-color) !important;
+      color: config.set-text-color(config.$navbar-color) !important;
   }
 }
 
 footer {
-  @include set-background($footer-color);
+  @include config.set-background(config.$footer-color);
   font-size: .7rem;
   text-align: center;
   padding: 1rem 0;
@@ -429,7 +437,7 @@ footer {
               }
 
               li a:active {
-                  color: $primary-color;
+                  color: config.$primary-color;
               }
           }
       }

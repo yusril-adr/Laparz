@@ -35,7 +35,7 @@ const createHomePageTemplate = () => `
         </div>
     </section>
 
-    <section class="home-section" id="main-content">
+    <section class="home-section" id="main-content" tabindex="-1">
         <div class="restaurant">
             <h2>Eksplor Restoran</h2>
 
@@ -48,13 +48,13 @@ const createHomePageTemplate = () => `
 `;
 
 const createDetailPageTemplate = () => `
-    <restaurant-detail id="main-content"></restaurant-detail>
+    <restaurant-detail id="main-content" tabindex="-1"></restaurant-detail>
     <div id="likeButtonContainer"></div>
     <loading-element></loading-element>
 `;
 
 const createFavoritePageTemplate = () => `
-    <section class="favorite" id="main-content">
+    <section class="favorite" id="main-content" tabindex="-1">
     <div class="favorite-restaurant">
         <h1>Restoran Favorit</h1>
 
@@ -102,7 +102,7 @@ const createRestaurantItemTemplate = (restaurant) => `
     <figure>
         <img 
             class="lazyload" 
-            data-src="${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId}" 
+            data-src="${`${API_ENDPOINT.IMAGES.SMALL}/${restaurant.pictureId}`}" 
             alt="${restaurant.name}"
             />
     </figure>
@@ -122,10 +122,10 @@ const createRestaurantDetailTemplate = (restaurant) => `
             <figure>
                 <img 
                     class="lazyload" 
-                    src="${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId}"
+                    src="${`${API_ENDPOINT.IMAGES.MEDIUM}/${restaurant.pictureId}`}"
                     srcset="
-                        ${API_ENDPOINT.IMAGES.SMALL + restaurant.pictureId} 405w,
-                        ${API_ENDPOINT.IMAGES.MEDIUM + restaurant.pictureId} 810w,
+                        ${`${API_ENDPOINT.IMAGES.SMALL}/${restaurant.pictureId}`} 405w,
+                        ${`${API_ENDPOINT.IMAGES.MEDIUM}/${restaurant.pictureId}`} 810w,
                     "
                     sizes="(max-width: 405px) 405px, 810px" 
                     alt="${restaurant.name}"

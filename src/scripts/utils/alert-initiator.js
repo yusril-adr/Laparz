@@ -11,6 +11,7 @@ const AlertInitiator = {
 
   async _render({ body, alertElem }, message) {
     alertElem.classList.add('alert');
+    // eslint-disable-next-line no-param-reassign
     alertElem.innerHTML = `
     <div class="alert-container">
         <span class="alert-text">${message}</span>
